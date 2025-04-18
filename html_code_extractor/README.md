@@ -22,6 +22,16 @@ It's perfect for extracting code examples from documentation, tutorials, or any 
 - **Progress Tracking**: Real-time progress bar during extraction
 - **Multi-threaded**: Background processing keeps the UI responsive
 - **Supports both .html and .htm files**: Works with all HTML file extensions
+- **Archive Support**: Save HTML files for later extraction with metadata
+
+## Tools Included
+
+This package includes three main tools:
+
+1. **HTML Code Extractor (Basic)**: Simple tool for extracting code from HTML files
+2. **HTML Code Extractor (Enhanced)**: Advanced tool with more features and customization options
+3. **HTML Code Saver**: Tool for saving HTML files with metadata for later extraction
+4. **HTML Archive Extractor**: Tool for extracting code from saved HTML archives
 
 ## Installation
 
@@ -38,7 +48,7 @@ It's perfect for extracting code examples from documentation, tutorials, or any 
 
 ## Usage
 
-### Basic Version
+### Basic HTML Code Extractor
 
 1. Run the basic script:
    ```
@@ -50,7 +60,7 @@ It's perfect for extracting code examples from documentation, tutorials, or any 
    - The output directory is automatically set to "WEB-CODES" on your desktop
    - Click "Extract Code" to start the extraction process
 
-### Enhanced Version
+### Enhanced HTML Code Extractor
 
 1. Run the enhanced script:
    ```
@@ -64,7 +74,32 @@ It's perfect for extracting code examples from documentation, tutorials, or any 
    - Click "Preview" to see what will be extracted without creating files
    - Click "Extract Code" to create the files
 
-3. Check the "WEB-CODES" folder on your desktop for the extracted files
+### HTML Code Saver
+
+1. Run the HTML Code Saver:
+   ```
+   python html_code_saver.py
+   ```
+
+2. Use the GUI to:
+   - Click "Browse..." to select your HTML file
+   - Set the archive location (defaults to "HTML-ARCHIVES" on your desktop)
+   - Optionally provide a custom archive name
+   - Click "Generate Preview" to see what files will be extracted
+   - Click "Save Archive" to save the HTML file with metadata for later extraction
+
+### HTML Archive Extractor
+
+1. Run the HTML Archive Extractor:
+   ```
+   python html_archive_extractor.py
+   ```
+
+2. Use the GUI to:
+   - Browse and select a previously saved HTML archive
+   - View information about the archive, including a preview of extractable files
+   - Set the output directory for extracted files
+   - Click "Extract Code" to extract the code from the archive
 
 ## How It Works
 
@@ -74,6 +109,16 @@ The tool works by:
 2. Finding all elements with class "text-sm text-zinc-400 mb-2 font-mono" which contain file paths
 3. For each file path, finding the associated code blocks with class "line added"
 4. Creating the necessary directory structure and files with the extracted code
+
+## Saving for Later Extraction
+
+The HTML Code Saver creates a self-contained archive that includes:
+
+1. The original HTML file
+2. A metadata.json file with information about the HTML file and extraction settings
+3. A preview.txt file showing what files will be extracted
+
+This allows you to save HTML files for later extraction, even if the original HTML file is modified or deleted.
 
 ## Customization
 
