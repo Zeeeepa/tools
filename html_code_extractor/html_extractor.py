@@ -86,8 +86,17 @@ def extract_code_from_html(html_file_path, output_dir=None):
             added_lines = table.find_all('tr', class_='line added')
             
             for line in added_lines:
-                # Extract code from the line
-                code_text = line.get_text().strip()
+                # Extract code from the line, removing line numbers
+                code_spans = line.find_all('span')
+                if code_spans:
+                    # Skip the first span which contains the line number
+                    code_text = ''.join(span.get_text() for span in code_spans[1:])
+                else:
+                    # Fallback to get all text if no spans found
+                    code_text = line.get_text().strip()
+                    # Try to remove line numbers using regex
+                    code_text = re.sub(r'^\d+\s*', '', code_text)
+                
                 code_blocks[current_file].append(code_text)
     
     # Create files with extracted code
