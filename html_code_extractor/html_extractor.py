@@ -146,7 +146,7 @@ class HTMLExtractorApp:
         """Open file dialog to select HTML file"""
         file_path = filedialog.askopenfilename(
             title="Select HTML File",
-            filetypes=[("HTML Files", "*.html"), ("All Files", "*.*")]
+            filetypes=[("HTML Files", "*.html;*.htm"), ("HTM Files", "*.htm"), ("HTML Files", "*.html"), ("All Files", "*.*")]
         )
         if file_path:
             self.file_path_var.set(file_path)

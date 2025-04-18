@@ -1,6 +1,6 @@
 # HTML Code Extractor
 
-A simple GUI tool that extracts code blocks from HTML files and creates the corresponding file structure.
+A powerful GUI tool that extracts code blocks from HTML files and creates the corresponding file structure.
 
 ## Overview
 
@@ -16,6 +16,12 @@ It's perfect for extracting code examples from documentation, tutorials, or any 
 - **File Structure Creation**: Creates the corresponding file structure based on file paths in the HTML
 - **Status Updates**: Shows the status of the extraction process
 - **Error Handling**: Provides error messages for common issues
+- **Preview Mode**: Preview files before extraction
+- **Custom Settings**: Configure CSS selectors to match different HTML structures
+- **Multiple Encodings**: Support for different file encodings
+- **Progress Tracking**: Real-time progress bar during extraction
+- **Multi-threaded**: Background processing keeps the UI responsive
+- **Supports both .html and .htm files**: Works with all HTML file extensions
 
 ## Installation
 
@@ -32,7 +38,9 @@ It's perfect for extracting code examples from documentation, tutorials, or any 
 
 ## Usage
 
-1. Run the script:
+### Basic Version
+
+1. Run the basic script:
    ```
    python html_extractor.py
    ```
@@ -41,6 +49,20 @@ It's perfect for extracting code examples from documentation, tutorials, or any 
    - Click "Browse..." to select your HTML file
    - The output directory is automatically set to "WEB-CODES" on your desktop
    - Click "Extract Code" to start the extraction process
+
+### Enhanced Version
+
+1. Run the enhanced script:
+   ```
+   python html_extractor_enhanced.py
+   ```
+
+2. Use the enhanced GUI with additional features:
+   - **Extract Tab**: Select HTML files, set output directory, and choose encoding
+   - **Settings Tab**: Customize CSS selectors and UI settings
+   - **Preview Tab**: Preview files before extraction
+   - Click "Preview" to see what will be extracted without creating files
+   - Click "Extract Code" to create the files
 
 3. Check the "WEB-CODES" folder on your desktop for the extracted files
 
@@ -55,7 +77,13 @@ The tool works by:
 
 ## Customization
 
-If you need to extract code from HTML files with a different structure, you can modify these parts of the script:
+The enhanced version allows you to customize the CSS selectors directly in the UI:
+
+1. Go to the "Settings" tab
+2. Modify the selectors for file paths, code tables, and code lines
+3. Click "Save Settings" to save your changes
+
+For the basic version, you can modify these parts of the script:
 
 1. To change the file path identifier class:
    ```python
