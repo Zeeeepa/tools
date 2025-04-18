@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 import os
 import re
-import sys
+import argparse
+from bs4 import BeautifulSoup
+from pathlib import Path
 import logging
 import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
-from bs4 import BeautifulSoup
-from pathlib import Path
 
 # Set up logging
 logging.basicConfig(
@@ -15,17 +15,21 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def extract_code_from_html(html_file_path, output_dir):
+def extract_code_from_html(html_file_path, output_dir=None):
     """
     Extract code blocks from HTML file and create corresponding files.
     
     Args:
         html_file_path (str): Path to the HTML file
-        output_dir (str): Directory to save extracted files
+        output_dir (str, optional): Directory to save extracted files. Defaults to current directory.
     
     Returns:
         list: List of created file paths
     """
+    # Set default output directory if not provided
+    if output_dir is None:
+        output_dir = os.getcwd()
+    
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
     
@@ -33,6 +37,15 @@ def extract_code_from_html(html_file_path, output_dir):
     try:
         with open(html_file_path, 'r', encoding='utf-8') as file:
             html_content = file.read()
+    except UnicodeDecodeError:
+        # Try with different encoding if utf-8 fails
+        try:
+            with open(html_file_path, 'r', encoding='latin-1') as file:
+                html_content = file.read()
+            logger.warning(f"Fallback to latin-1 encoding for {html_file_path}")
+        except Exception as e:
+            logger.error(f"Error reading HTML file: {e}")
+            return []
     except Exception as e:
         logger.error(f"Error reading HTML file: {e}")
         return []
@@ -141,16 +154,16 @@ class HTMLExtractorApp:
         self.status_var = tk.StringVar(value="Ready")
         status_bar = ttk.Label(root, textvariable=self.status_var, relief=tk.SUNKEN, anchor=tk.W)
         status_bar.pack(side=tk.BOTTOM, fill=tk.X)
-
+    
     def browse_file(self):
         """Open file dialog to select HTML file"""
         file_path = filedialog.askopenfilename(
             title="Select HTML File",
-            filetypes=[("HTML Files", "*.html;*.htm"), ("HTM Files", "*.htm"), ("HTML Files", "*.html"), ("All Files", "*.*")]
+            filetypes=[("HTML Files", "*.html;*.htm"), ("All Files", "*.*")]
         )
         if file_path:
             self.file_path_var.set(file_path)
-
+    
     def extract_code(self):
         """Extract code from the selected HTML file"""
         html_file = self.file_path_var.get()
