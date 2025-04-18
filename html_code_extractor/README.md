@@ -8,28 +8,15 @@ This tool is designed to extract code blocks from HTML files that have a specifi
 
 It's perfect for extracting code examples from documentation, tutorials, or any HTML page that contains structured code blocks.
 
-## Features
-
-- **Simple GUI Interface**: Easy-to-use interface for selecting HTML files
-- **Automatic Output Directory**: Creates a "WEB-CODES" folder on your desktop
-- **Code Extraction**: Extracts code blocks with class "line added" from the HTML file
-- **File Structure Creation**: Creates the corresponding file structure based on file paths in the HTML
-- **Status Updates**: Shows the status of the extraction process
-- **Error Handling**: Provides error messages for common issues
-- **Preview Mode**: Preview files before extraction
-- **Custom Settings**: Configure CSS selectors to match different HTML structures
-- **Multiple Encodings**: Support for different file encodings
-- **Progress Tracking**: Real-time progress bar during extraction
-- **Multi-threaded**: Background processing keeps the UI responsive
-- **Supports both .html and .htm files**: Works with all HTML file extensions
-- **Archive Support**: Save HTML files for later extraction with metadata
-
 ## Tools Included
 
 This package includes three main tools:
 
 1. **HTML Code Extractor (Basic)**: Simple tool for extracting code from HTML files
 2. **HTML Code Extractor (Enhanced)**: Advanced tool with more features and customization options
+   - Now includes a tabbed interface with extraction, settings, and preview tabs
+   - Supports command-line usage with customizable CSS selectors
+   - Specifically designed for HTML files with code blocks marked with the class "line added" and file paths identified by the class "text-sm text-zinc-400 mb-2 font-mono"
 3. **HTML Code Saver**: Tool for saving HTML files with metadata for later extraction
 4. **HTML Archive Extractor**: Tool for extracting code from saved HTML archives
 
@@ -48,7 +35,7 @@ This package includes three main tools:
 
 ## Usage
 
-### Basic HTML Code Extractor
+### HTML Code Extractor (Basic)
 
 1. Run the basic script:
    ```
@@ -60,19 +47,50 @@ This package includes three main tools:
    - The output directory is automatically set to "WEB-CODES" on your desktop
    - Click "Extract Code" to start the extraction process
 
-### Enhanced HTML Code Extractor
+### HTML Code Extractor (Enhanced)
 
 1. Run the enhanced script:
    ```
    python html_extractor_enhanced.py
    ```
 
-2. Use the enhanced GUI with additional features:
+2. Use the GUI to:
    - **Extract Tab**: Select HTML files, set output directory, and choose encoding
-   - **Settings Tab**: Customize CSS selectors and UI settings
+   - **Settings Tab**: Customize CSS selectors for file paths, code tables, and code lines
    - **Preview Tab**: Preview files before extraction
    - Click "Preview" to see what will be extracted without creating files
    - Click "Extract Code" to create the files
+
+3. Command-line usage:
+   ```
+   python html_extractor_enhanced.py path/to/your/file.html -o output/directory
+   ```
+
+   Available options:
+   ```
+   usage: html_extractor_enhanced.py [-h] [-o OUTPUT_DIR] [--file-path-selector FILE_PATH_SELECTOR]
+                                [--code-table-selector CODE_TABLE_SELECTOR]
+                                [--code-line-selector CODE_LINE_SELECTOR] [-v] [--v2]
+                                html_file
+
+   Extract code blocks from HTML files and create corresponding files.
+
+   positional arguments:
+     html_file             Path to the HTML file
+
+   optional arguments:
+     -h, --help            show this help message and exit
+     -o OUTPUT_DIR, --output-dir OUTPUT_DIR
+                           Directory to save extracted files. Defaults to current directory.
+     --file-path-selector FILE_PATH_SELECTOR
+                           CSS selector for file paths. Defaults to "text-sm text-zinc-400 mb-2 font-mono".
+     --code-table-selector CODE_TABLE_SELECTOR
+                           CSS selector for code tables. Defaults to "syntax-highlight".
+     --code-line-selector CODE_LINE_SELECTOR
+                           CSS selector for code lines. Defaults to "line added".
+     -v, --verbose         Enable verbose output
+     --v2                  Use the v2 interface
+   ```
 
 ### HTML Code Saver
 
@@ -139,6 +157,18 @@ For the basic version, you can modify these parts of the script:
    ```python
    added_lines = table.find_all('tr', class_='line added')
    ```
+
+## Features
+
+- **Code Extraction**: Extract code blocks from HTML files
+- **File Structure Creation**: Create the corresponding file structure based on file paths in the HTML
+- **Customizable Selectors**: Configure CSS selectors to match different HTML structures
+- **Preview Mode**: Preview files before extraction
+- **Multiple Encodings**: Support for different file encodings
+- **Progress Tracking**: Real-time progress bar during extraction
+- **Multi-threaded**: Background processing keeps the UI responsive
+- **Command-line Interface**: Use the tools from the command line for automation
+- **Tabbed Interface**: Enhanced version includes tabs for extraction, settings, and preview
 
 ## Requirements
 
