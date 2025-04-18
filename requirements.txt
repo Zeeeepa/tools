@@ -1,0 +1,8 @@
+beautifulsoup4>=4.9.0
+pytest>=6.0.0
+black>=21.5b2
+isort>=5.9.1
+mypy>=0.812
+flake8>=3.9.2
+pre-commit>=2.13.0
+pytest-cov>=2.12.1
