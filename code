@@ -1,0 +1,7 @@
+HTML Code Extractor tool with a Tkinter file explorer interface that extracts code from HTML files into a "WEB-CODES" folder on your desktop. The tool includes html_extractor.py and a detailed README.md with usage instructions.
+The tool specifically extracts code blocks with class "line added" and file paths identified by class "text-sm text-zinc-400 mb-2 font-mono" from HTML files, creating the corresponding file structure automatically.
+How to Use:
+Install dependencies: pip install beautifulsoup4
+Run the script: python tools/html_code_extractor/html_extractor.py
+Use the GUI to select an HTML file and extract the code
+Find the extracted files in the "WEB-CODES" folder on your desktop
