@@ -135,7 +135,7 @@ class HTMLExtractorApp:
         button_frame.pack(fill=tk.X, pady=20)
         
         ttk.Button(button_frame, text="Extract Code", command=self.extract_code).pack(side=tk.LEFT, padx=5)
-        ttk.Button(button_frame, text="Exit", command=root.destroy).pack(side=tk.RIGHT, padx=5)
+        ttk.Button(button_frame, text="Exit", command=self.root.destroy).pack(side=tk.RIGHT, padx=5)
         
         # Create the status bar
         self.status_var = tk.StringVar(value="Ready")
